@@ -6,6 +6,8 @@
     </div>
 
     <div class="d-flex justify-content-end">
+                <a class="btn btn-info mr-sm-2" href="/category" />Категории</a>
+
                 <a class="btn btn-info mr-sm-2" href="/sign-in" />Войти</a>
 
                 <a class="btn btn-info mr-sm-2" href="/sign-up"/>Зарегистрироваться</a>
