@@ -6,7 +6,14 @@
     </div>
 
     <div class="d-flex justify-content-end">
-                <a class="btn btn-info mr-sm-2" href="/category" />Категории</a>
+
+                <a class="btn btn-info mr-sm-2" href="/drug/all" />База лекарств</a>
+
+                <a class="btn btn-info mr-sm-2" href="/drug" />Добавить лекарство</a>
+
+                <a class="btn btn-info mr-sm-2" href="/analogue" />Добавить класс аналоги</a>
+
+                <a class="btn btn-info mr-sm-2" href="/category" />Добавить категорию</a>
 
                 <a class="btn btn-info mr-sm-2" href="/sign-in" />Войти</a>
 
