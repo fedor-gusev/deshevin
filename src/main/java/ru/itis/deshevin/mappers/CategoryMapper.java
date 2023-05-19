@@ -7,7 +7,7 @@ import ru.itis.deshevin.models.CategoryEntity;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CategoryMapper {
     CategoryEntity toCategoryEntity(CategoryDto categoryDto);
     CategoryDto toCategoryDto(CategoryEntity categoryEntity);
