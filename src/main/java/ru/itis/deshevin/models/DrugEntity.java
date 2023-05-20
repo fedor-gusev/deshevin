@@ -1,27 +1,23 @@
 package ru.itis.deshevin.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"analogueClass", "category"})
+@ToString(exclude = "analogueClass")
 @Table(name = "drug")
 public class DrugEntity extends BaseEntity {
 
     private String title;
 
+    @Column(columnDefinition="TEXT")
     private String description;
 
     @ManyToOne

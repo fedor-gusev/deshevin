@@ -1,9 +1,6 @@
 package ru.itis.deshevin.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -16,7 +13,8 @@ import java.util.Set;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = "drugs")
+@ToString(exclude = "drugs")
 @Table(name = "category")
 public class CategoryEntity extends BaseEntity {
 
