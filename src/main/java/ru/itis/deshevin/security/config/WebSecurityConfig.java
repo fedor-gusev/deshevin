@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/profile/**", "/drug/**").authenticated()
+                    .antMatchers("/profile/**", "/drug/**", "/favourites/**").authenticated()
                     .antMatchers("/analogue", "/category").hasAuthority("ADMIN")
                     .anyRequest().permitAll()
                     .and()
@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .and()
                 .csrf().disable()
-                .exceptionHandling().accessDeniedPage("/profile");
+                .exceptionHandling().accessDeniedPage("/access-denied");
     }
 
 
