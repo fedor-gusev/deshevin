@@ -15,9 +15,13 @@
 
                 <a class="btn btn-info mr-sm-2" href="/category" />Добавить категорию</a>
 
-                <a class="btn btn-info mr-sm-2" href="/sign-in" />Войти</a>
-
-                <a class="btn btn-info mr-sm-2" href="/sign-up"/>Зарегистрироваться</a>
+                <#if user??>
+                    <a class="btn btn-info mr-sm-2" href="/profile" />Профиль (${user.username})</a>
+                    <a class="btn btn-info mr-sm-2" href="/logout" />Выход</a>
+                <#else>
+                    <a class="btn btn-info mr-sm-2" href="/sign-in" />Войти</a>
+                    <a class="btn btn-info mr-sm-2" href="/sign-up"/>Зарегистрироваться</a>
+                </#if>
     </div>
 
 
