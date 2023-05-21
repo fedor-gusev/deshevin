@@ -38,11 +38,11 @@
         </div>
         <div class="mb-3">
             <label for="firstName" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="firstName" name="first-name" required>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
         </div>
         <div class="mb-3">
             <label for="lastName" class="form-label">Фамилия</label>
-            <input type="text" class="form-control" id="lastName" name="last-name" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
         <div class="mb-3">
             <label for="city" class="form-label">Город</label>
@@ -61,6 +61,13 @@
         <input class="btn btn-info" type="submit" value="Зарегистрироваться">
 
     </form>
+
+    <#if errors??>
+        <#list errors as error>
+            <div class="text">Ошибка: ${error.name}</div>
+            <br>
+        </#list>
+    </#if>
 
     <a href="/sign-in" class="sign-in">Перейти к login</a>
 

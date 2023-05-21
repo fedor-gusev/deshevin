@@ -9,7 +9,7 @@
     <title>Форма регистрации</title>
 
     <style>
-        .sign-up-form {
+        .sign-in-form {
             margin-left: auto;
             margin-right: auto;
             width: 50%;
@@ -31,7 +31,7 @@
     <div class="container">
         <h1>Вход</h1>
     </div>
-    <form method="post" action="/sign-in" class="sign-up-form" enctype="multipart/form-data">
+    <form method="post" action="/sign-in" class="sign-in-form" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="email" class="form-label">Электронная почта</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -39,9 +39,6 @@
         <div class="mb-3">
             <label for="password" class="form-label">Пароль</label>
             <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="mb-3">
-            <input type="checkbox" name="rememberMe">Запомнить меня
         </div>
         <br>
         <br>

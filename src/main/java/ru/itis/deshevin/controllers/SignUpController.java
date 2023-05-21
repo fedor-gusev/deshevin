@@ -3,6 +3,7 @@ package ru.itis.deshevin.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,8 +28,9 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String signUp(@ModelAttribute(name = "signUpDto") SignUpDto signUpDto, BindingResult bindingResult) {
+    public String signUp(@ModelAttribute(name = "signUpDto") SignUpDto signUpDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
             return "sign-up";
         }
         signUpService.signUp(signUpDto);
