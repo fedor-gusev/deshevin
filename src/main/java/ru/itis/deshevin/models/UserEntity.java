@@ -35,7 +35,7 @@ public class UserEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_favorite_drugs",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -1,10 +1,12 @@
 package ru.itis.deshevin.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.deshevin.dto.CategoryDto;
+import ru.itis.deshevin.security.details.UserEntityDetails;
 import ru.itis.deshevin.services.CategoryService;
 
 import java.util.UUID;
@@ -17,7 +19,8 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public String getCategoryPage(Model model) {
+    public String getCategoryPage(@AuthenticationPrincipal UserEntityDetails userEntityDetails, Model model) {
+        model.addAttribute("user", userEntityDetails.getUserEntity());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "category";
     }
