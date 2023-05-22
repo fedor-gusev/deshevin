@@ -8,9 +8,6 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Панель лекарств</title>
 
-
-
-
     <#include "/components/links.ftl">
     <script>
         function delet(id){
@@ -18,9 +15,8 @@
                 url:'/drug?id='+id,
                 type:'delete'
             });
-
+            document.getElementById("my-tr-" + id).hidden = true
         }
-
     </script>
 
 </head>
@@ -42,7 +38,7 @@
         </thead>
         <#list drugs as drug>
 
-            <tr>
+            <tr id="my-tr-${drug.id}">
                 <th scope="row">${drug?index + 1}</th>
                 <td><a href="/drug/${drug.id}">${drug.title}</a></td>
                 <td>${drug.description}...</td>

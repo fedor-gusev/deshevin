@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.itis.deshevin.security.details.UserEntityDetails;
 import ru.itis.deshevin.services.FavouritesService;;import java.util.UUID;
 
@@ -24,18 +22,16 @@ public class FavouritesController {
         return "favourites";
     }
 
-    @GetMapping("/add-to-favourites/{drugId}")
+    @PostMapping("/add-to-favourites/{drug-id}")
     public String addItemToFavourites(@AuthenticationPrincipal UserEntityDetails userEntityDetails,
-                                      @PathVariable("drugId") UUID drugId, Model model) {
-        model.addAttribute("user", userEntityDetails.getUserEntity());
+                                      @PathVariable("drug-id") UUID drugId) {
         favouritesService.addDrugToFavourites(userEntityDetails.getUserEntity().getId(), drugId);
         return "redirect:/favourites";
     }
 
-    @GetMapping("/delete-from-favourites/{drugId}")
+    @DeleteMapping("/delete-from-favourites/{drug-id}")
     public String deleteItemFromFavourites(@AuthenticationPrincipal UserEntityDetails userEntityDetails,
-                                           @PathVariable("drugId") UUID drugId, Model model) {
-        model.addAttribute("user", userEntityDetails.getUserEntity());
+                                           @PathVariable("drug-id") UUID drugId) {
         favouritesService.deleteDrugFromFavourites(userEntityDetails.getUserEntity().getId(), drugId);
         return "redirect:/favourites";
     }

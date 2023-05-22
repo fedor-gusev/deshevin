@@ -8,21 +8,6 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Профиль</title>
 
-    <style>
-        .sign-up-form {
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
-
-        .brd {
-            border: 4px double black; /* Параметры границы */
-            padding: 10px; /* Поля вокруг текста */
-        }
-
-    </style>
-
-
     <#include "/components/links.ftl">
 
 <body class="text-center">
