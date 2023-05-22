@@ -8,19 +8,18 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Избранное</title>
 
-    <style>
-        .sign-up-form {
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
+    <#include "/components/links.ftl">
 
-        .brd {
-            border: 4px double black; /* Параметры границы */
-            padding: 10px; /* Поля вокруг текста */
+    <script>
+        function delFromFav(id) {
+            //alert('/favourites/delete-from-favourites/' + id)
+            jQuery.ajax({
+                url: '/favourites/delete-from-favourites/' + id,
+                type: 'delete'
+            });
+            document.getElementById("my-tr-" + id).hidden = true
         }
-
-    </style>
+    </script>
 
 
     <#include "/components/links.ftl">
@@ -28,36 +27,38 @@
 <body class="text-center">
 <#include "/components/header.ftl">
 <main class="container">
-    <div class="container">
-        <h1>Избранное</h1>
-    </div>
+    <h1 class="text-center">Избранные лекарства</h1>
 
-    <div id="favourites">
-        <#list favourites as drug>
-            <div id="item" style="margin-left: 20px">
-                <div class="mb-3">
-                    <label for="title" class="drug-info">Название: ${drug.title}</label>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="drug-info">Описание: ${drug.description}</label>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="drug-info">Категория: ${drug.category}</label>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="drug-info">Класс аналогов: ${drug.analogueClass}</label>
-                </div>
-                <a href="/favorites/delete-from-favourites/${drug.id}" class="del-from-fav">удалить из избранного</a>
-            </div>
-            <#if drug_index < favourites?size - 1>
-                <div class="divider"></div>
-            </#if>
-        </#list>
-        <div class="mb-3">Всего <span id="drugsCount">${favourites?size}</span> избранных лекарств</div>
-    </div>
+    <table class="table">
+        <thead class="thead-light bg-info">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Категория</th>
+            <th scope="col">Аналог класс</th>
+            <th scope="col">Удалить из избранного</th>
+        </tr>
+        </thead>
+        <#if favourites??>
+            <#list favourites as drug>
 
-    <#include "/components/footer.ftl" >
+                <tr id="my-tr-${drug.id}">
+                    <th scope="row">${drug?index + 1}</th>
+                    <td><a href="/drug/${drug.id}">${drug.title}</a></td>
+                    <td>${drug.description}...</td>
+                    <td>${drug.category}</td>
+                    <td>${drug.analogueClass}</td>
+                    <td>
+                        <button type="submit" onclick="delFromFav('${drug.id}')" style="position:relative; left:10px; top:15px" class="btn btn-danger">X</button>
+                    </td>
+                </tr>
+            </#list>
+        </#if>
+    </table>
+</main>
 
+<#include "/components/footer.ftl" >
 
 </body>
 </html>

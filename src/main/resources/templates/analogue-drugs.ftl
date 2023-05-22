@@ -32,7 +32,7 @@
                 <td>${drug.category}</td>
                 <td>${drug.analogueClass}</td>
                 <td>
-                    <form action="/favourites/add-to-favourites/${drug.id}">
+                    <form action="/favourites/add-to-favourites/${drug.id}" method="post">
                         <button type="submit" style = "position:relative; left:10px; top:15px" class="btn">Добавить в избранное</button>
                     </form>
                 </td>

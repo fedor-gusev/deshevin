@@ -28,7 +28,7 @@ public class FavouritesServiceImpl implements FavouritesService {
         UserEntity user = userEntityRepository.findById(userId).orElseThrow();
         DrugEntity drug = drugRepository.findById(drugId).orElseThrow();
 
-        user.getFavorites().add(drug);
+        if(!user.getFavorites().contains(drug)) user.getFavorites().add(drug);
 
         userEntityRepository.save(user);
         log.info("Successfuly add drug: " + drug + "to account: " + user);
