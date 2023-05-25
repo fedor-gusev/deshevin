@@ -29,8 +29,8 @@
             <tr>
                 <td><a href="/drug/${drug.id}">${drug.title}</a></td>
                 <td>${drug.description}...</td>
-                <td>${drug.category}</td>
-                <td>${drug.analogueClass}</td>
+                <td><#if drug.category??>${drug.category}<#else>нет</#if></td>
+                <td><#if drug.analogueClass??>${drug.analogueClass}<#else>нет</#if></td>
                 <td>
                     <form action="/favourites/add-to-favourites/${drug.id}" method="post">
                         <button type="submit" style = "position:relative; left:10px; top:15px" class="btn">Добавить в избранное</button>
