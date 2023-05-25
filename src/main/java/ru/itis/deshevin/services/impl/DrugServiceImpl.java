@@ -73,6 +73,11 @@ public class DrugServiceImpl implements DrugService {
     @Override
     public void deleteDrugBuId(UUID id) {
         log.info("Start deleting drug with id = " + id);
+        drugRepository.findById(id).ifPresent(
+                drug -> drug.getUsers().forEach(
+                        user -> user.getFavorites().remove(drug)
+                )
+        );
         drugRepository.deleteById(id);
         log.info("Finish deleting drug");
 

@@ -4,14 +4,15 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true, exclude = {"analogueClass", "category"})
-@ToString(exclude = "analogueClass")
+@EqualsAndHashCode(callSuper = true, exclude = {"analogueClass", "category", "users"})
+@ToString(exclude = {"analogueClass", "users"})
 @Table(name = "drug")
 public class DrugEntity extends BaseEntity {
 
@@ -28,4 +29,6 @@ public class DrugEntity extends BaseEntity {
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
 
+    @ManyToMany(mappedBy = "favorites", cascade = CascadeType.DETACH)
+    private Set<UserEntity> users;
 }
