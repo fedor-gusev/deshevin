@@ -29,7 +29,7 @@
                     </p>
                     <p><strong>Категория:</strong>
                         <select name="categoryId" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <option value="" selected>${drug.category}</option>
+                            <option value="" selected><#if drug.category??>${drug.category}<#else>нет</#if></option>
                             <#list categories as category>
                                 <option value="${category.id}">${category.title}</option>
                             </#list>
@@ -37,7 +37,7 @@
                     </p>
                     <p><strong>Класс аналог:</strong>
                         <select name="analogueId" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <option name="analogueId" value="" selected>${drug.analogueClass}</option>
+                            <option name="analogueId" value="" selected> <#if drug.analogueClass??>${drug.analogueClass}<#else>нет</#if></option>
                             <#list analogues as analogue>
                                 <option value="${analogue.id}">${analogue.title}</option>
                             </#list>
@@ -64,10 +64,10 @@
                     <label for="title" class="drug-info">Название: ${drug.title}</label>
                 </div>
                 <div class="mb-3">
-                    <label for="category" class="drug-info">Категория: ${drug.category}</label>
+                    <label for="category" class="drug-info">Категория: <#if drug.category??>${drug.category}<#else>нет</#if></label>
                 </div>
                 <div class="mb-3">
-                    <label for="analogue-class" class="drug-info">Класс аналог: ${drug.analogueClass}</label>
+                    <label for="analogue-class" class="drug-info">Класс аналог: <#if drug.analogueClass??>${drug.analogueClass}<#else>нет</#if></label>
                 </div>
             </main>
         </#if>
