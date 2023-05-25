@@ -42,8 +42,8 @@
                 <th scope="row">${drug?index + 1}</th>
                 <td><a href="/drug/${drug.id}">${drug.title}</a></td>
                 <td>${drug.description}...</td>
-                <td>${drug.category}</td>
-                <td>${drug.analogueClass}</td>
+                <td><#if drug.category??>${drug.category}<#else>нет</#if></td>
+                <td> <#if drug.analogueClass??>${drug.analogueClass}<#else>нет</#if></td>
                 <td>
                     <button type="submit" onclick="delet('${drug.id}')" style = "position:relative; left:10px; top:15px" class="btn btn-danger">X</button>
                 </td>
