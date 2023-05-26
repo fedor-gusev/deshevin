@@ -15,6 +15,7 @@ import ru.itis.deshevin.services.DrugService;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -62,7 +63,11 @@ public class DrugServiceImpl implements DrugService {
     @Override
     public List<DrugDto> getAllDrugs() {
         log.info("Get all drug info ...");
-        return drugMapper.toDrugListDto(drugRepository.findAll());
+        return drugMapper.toDrugListDto(drugRepository.findAll())
+                .stream()
+                .peek(
+                        drug -> drug.setDescription(drug.getDescription().substring(0, Integer.min(100, drug.getDescription().length())))
+                ).collect(Collectors.toList());
     }
 
     @Override

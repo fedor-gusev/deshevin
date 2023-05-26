@@ -28,7 +28,11 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<DrugDto> getDrugsForPreview() {
         log.info("Get drugs for preview");
-        return drugMapper.toDrugListDto(drugRepository.findAll().stream().limit(50L).collect(Collectors.toList()));
+        return drugMapper.toDrugListDto(drugRepository.findAll()
+                .stream()
+                .peek(
+                        drug -> drug.setDescription(drug.getDescription().substring(0, Integer.min(100, drug.getDescription().length())))
+                ).limit(50L).collect(Collectors.toList()));
     }
 
     @Override
